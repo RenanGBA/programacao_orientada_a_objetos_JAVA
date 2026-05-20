@@ -1,25 +1,26 @@
 public class Conta {
     String titular;
     double saldo;
-    boolean confirmacao = false;
+    boolean confirmacao;
+
     public void depositar(double valor){
-        saldo+=valor;
+        this.saldo+=valor;
         System.out.println("Seu saldo é de: R$" + saldo);
     }
 
     public void sacar(double valor){
-        if (valor < saldo){
-            saldo-=valor;
+        if (valor < this.saldo){
+            this.saldo-=valor;
             System.out.println("Sacando R$" + valor);
-            System.out.println("Seu saldo é de: R$" + saldo);
+            System.out.println("Seu saldo é de: R$" + this.saldo);
         } else {
             System.out.println("Saldo insuficiente!");
         }
     }
 
     public void acessarConta(String nome){
-        if (nome.equals(titular)){
-            confirmacao = true;
+        if (nome.equals(this.titular)){
+            this.confirmacao = true;
             System.out.println("Acessando conta!");
         } else {
             System.out.println("Conta inexistente!");
@@ -27,6 +28,6 @@ public class Conta {
     }
 
     public void criarConta(String nome){
-        titular = nome;
+        this.titular = nome;
     }
 }
