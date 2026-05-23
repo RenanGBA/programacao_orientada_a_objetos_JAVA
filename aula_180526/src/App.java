@@ -6,6 +6,7 @@ public class App {
         Conta conta = new Conta();
         int escolha;
         double valor;
+        String nomeConta;
 
         do{
             System.out.println("Escolha uma opção: \n1-Acessar conta\n2-Cadastrar conta\n3-Sair");
@@ -14,15 +15,15 @@ public class App {
                 case 1:
                     System.out.println("Qual o nome do titular?");
                     scanner.nextLine();
-                    conta.titular = scanner.nextLine();
-                    conta.acessarConta(conta.titular);
+                    nomeConta = scanner.nextLine();
+                    conta.acessarConta(nomeConta);
                     break;
                 
                 case 2:
                     System.out.println("Qual o nome do titular?");
                     scanner.nextLine();
-                    conta.titular = scanner.nextLine();
-                    conta.criarConta(conta.titular);
+                    nomeConta = scanner.nextLine();
+                    conta.criarConta(nomeConta);
                     break;
                 
                 case 3:

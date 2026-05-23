@@ -1,0 +1,62 @@
+public class Quarto {
+    private int quartoNumero, quartoDiasOcupados;
+    private String quartoTipo;
+    private double valorDiaria;
+    private boolean quartoOcupado;
+    Hospede hospedeAtual = new Hospede(null, null, null);
+
+    public Quarto(int Qnumero, String Qtipo) {
+        this.quartoNumero = Qnumero;
+        this.quartoTipo = Qtipo;
+        this.quartoOcupado = false;
+        this.quartoDiasOcupados = 0;
+        if (this.quartoTipo.equals("s")) {
+            this.valorDiaria = 100.00;
+        } else if (this.quartoTipo.equals("l")) {
+            this.valorDiaria = 250.00;
+        }
+        this.hospedeAtual = new Hospede(null, null, null);
+    }
+
+    public void checkIn(Hospede novoHospede, int diasOcupados) {
+        if (quartoOcupado == false){
+            this.quartoOcupado = true;
+            this.hospedeAtual = novoHospede;
+            this.quartoDiasOcupados = diasOcupados;
+            System.out.println("Sucesso!");
+        } else {
+            System.out.println("Quarto ocupado!");
+        }
+    }
+
+    public void checkOut(double calculoValor){
+        calculoValor = this.quartoDiasOcupados*this.valorDiaria;
+        this.quartoOcupado = false;
+        this.hospedeAtual = null;
+        System.out.println("O valor da hospedagem é de: " + calculoValor);
+    }
+
+    public int getQuartoNumero() {
+        return this.quartoNumero;
+    }
+
+    public int getQuartoDiasOcupados() {
+        return this.quartoDiasOcupados;
+    }
+
+    public String getQuartoTipo() {
+        return this.quartoTipo;
+    }
+
+    public double getValorDiaria() {
+        return this.valorDiaria;
+    }
+
+    public boolean getQuartoOcupado() {
+        return this.quartoOcupado;
+    }
+
+    public Hospede getHospedeAtual() {
+        return this.hospedeAtual;
+    }
+}
