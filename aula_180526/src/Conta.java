@@ -9,7 +9,7 @@ public class Conta {
     }
 
     public void sacar(double valor){
-        if (valor < this.saldo){
+        if (valor <= this.saldo){
             this.saldo-=valor;
             System.out.println("Sacando R$" + valor);
             System.out.println("Seu saldo é de: R$" + this.saldo);
@@ -29,5 +29,6 @@ public class Conta {
 
     public void criarConta(String nome){
         this.titular = nome;
+        this.saldo = 0.0;
     }
 }
