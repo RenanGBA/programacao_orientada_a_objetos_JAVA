@@ -3,16 +3,16 @@ public class Quarto {
     private String quartoTipo;
     private double valorDiaria;
     private boolean quartoOcupado;
-    Hospede hospedeAtual = new Hospede(null, null, null);
+    private Hospede hospedeAtual = new Hospede(null, null, null);
 
     public Quarto(int Qnumero, String Qtipo) {
         this.quartoNumero = Qnumero;
         this.quartoTipo = Qtipo;
         this.quartoOcupado = false;
         this.quartoDiasOcupados = 0;
-        if (this.quartoTipo.equals("s")) {
+        if (this.quartoTipo.equals("Simples") || this.quartoTipo.equals("simples")) {
             this.valorDiaria = 100.00;
-        } else if (this.quartoTipo.equals("l")) {
+        } else if (this.quartoTipo.equals("Luxo") || this.quartoTipo.equals("Luxo")) {
             this.valorDiaria = 250.00;
         }
         this.hospedeAtual = new Hospede(null, null, null);
@@ -29,11 +29,8 @@ public class Quarto {
         }
     }
 
-    public void checkOut(double calculoValor){
-        calculoValor = this.quartoDiasOcupados*this.valorDiaria;
-        this.quartoOcupado = false;
-        this.hospedeAtual = null;
-        System.out.println("O valor da hospedagem é de: " + calculoValor);
+    public double checkOutCalc(){
+        return this.quartoDiasOcupados * this.valorDiaria;
     }
 
     public int getQuartoNumero() {
