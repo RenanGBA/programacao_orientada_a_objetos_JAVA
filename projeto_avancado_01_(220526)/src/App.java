@@ -7,7 +7,7 @@ public class App {
         int numeroQuarto, diasOcupados, escolha;
         double faturamentoDia = 0;
 
-        Quarto[] quartos = new Quarto[1];
+        Quarto[] quartos = new Quarto[3];
 
         for (int i = 0; i < quartos.length; i++) {
             numeroQuarto = i + 1;
@@ -15,8 +15,6 @@ public class App {
             tipoQuarto = scanner.nextLine();
             quartos[i] = new Quarto(numeroQuarto, tipoQuarto);
         }
-
-        
 
         do {
             System.out.println(
@@ -38,7 +36,7 @@ public class App {
                     numeroQuarto = scanner.nextInt();
                     if (quartos[numeroQuarto - 1].getQuartoOcupado() == false) {
                         scanner.nextLine();
-                        System.out.println("Qual o nome do hospede");
+                        System.out.println("Qual o nome do hospede?");
                         nomeHospede = scanner.nextLine();
                         System.out.println("Qual o CPF do hospede?");
                         cpfHospede = scanner.nextLine();
@@ -53,18 +51,32 @@ public class App {
                         System.out.println("Quarto atualmente ocupado!");
                     }
                     break;
-                
+
                 case 3:
                     System.out.println("Qual o número do quarto?");
                     numeroQuarto = scanner.nextInt();
                     System.out.println("Valor a ser pago: R$" + quartos[numeroQuarto - 1].checkOut());
                     faturamentoDia += quartos[numeroQuarto - 1].checkOut();
-                    quartos[numeroQuarto - 1].
+                    quartos[numeroQuarto - 1].setHospedeAtual();
+                    quartos[numeroQuarto - 1].setQuartoDiasOcupados();
+                    quartos[numeroQuarto - 1].setQuartoOcupado();
                     break;
+
+                case 4:
+                    System.out.println("O caixa fechou em: R$" + faturamentoDia);
+                    System.out.println("Encerrando programa");
+                    break;
+
+                case 5:
+                    System.out.println("Encerrando programa!");
+                    break;
+
                 default:
                     System.out.println("Opção inválida!");
                     break;
             }
         } while (escolha != 5);
+
+        scanner.close();
     }
 }
