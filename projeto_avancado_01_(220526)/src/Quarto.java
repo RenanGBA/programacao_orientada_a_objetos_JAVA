@@ -12,14 +12,14 @@ public class Quarto {
         this.quartoDiasOcupados = 0;
         if (this.quartoTipo.equals("Simples") || this.quartoTipo.equals("simples")) {
             this.valorDiaria = 100.00;
-        } else if (this.quartoTipo.equals("Luxo") || this.quartoTipo.equals("Luxo")) {
+        } else if (this.quartoTipo.equals("Luxo") || this.quartoTipo.equals("luxo")) {
             this.valorDiaria = 250.00;
         }
         this.hospedeAtual = new Hospede(null, null, null);
     }
 
     public void checkIn(Hospede novoHospede, int diasOcupados) {
-        if (quartoOcupado == false){
+        if (quartoOcupado == false) {
             this.quartoOcupado = true;
             this.hospedeAtual = novoHospede;
             this.quartoDiasOcupados = diasOcupados;
@@ -29,7 +29,7 @@ public class Quarto {
         }
     }
 
-    public double checkOutCalc(){
+    public double checkOut() {
         return this.quartoDiasOcupados * this.valorDiaria;
     }
 
@@ -53,7 +53,24 @@ public class Quarto {
         return this.quartoOcupado;
     }
 
-    public Hospede getHospedeAtual() {
-        return this.hospedeAtual;
+    public String getHospedeAtual() {
+        String status = "Quarto desocupado!";
+        if (this.hospedeAtual != null) {
+            return this.hospedeAtual.getHospedeNome();
+        } else {
+            return status;
+        }
+    }
+
+    public void setQuartoOcupado() {
+        this.quartoOcupado = false;
+    }
+
+    public void setHospedeAtual() {
+        this.hospedeAtual = null;
+    }
+
+    public void setQuartoDiasOcupados() {
+        this.quartoDiasOcupados = 0;
     }
 }
